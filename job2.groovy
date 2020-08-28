@@ -3,7 +3,9 @@ description('we made this job for deployment')
 triggers {
         upstream('Code-Fetch', 'SUCCESS')
     }
-
+shell('''sudo cd /root/task6/
+         sudo cp * -rvf /root/task6/
+      ''')
 steps {
 shell('''if ! kubectl get pvc | grep pvc
          then

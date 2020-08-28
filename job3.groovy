@@ -16,7 +16,7 @@ shell('''nodeport=$(kubectl get svc -o jsonpath={.items[*].spec.ports[*].nodePor
 }
 publishers {
         downstreamParameterized {
-            trigger('job4') {
+            trigger('job4notify') {
                 condition('FAILED')
                 triggerWithNoParameters()
                 

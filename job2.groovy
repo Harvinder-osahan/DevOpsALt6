@@ -4,10 +4,7 @@ triggers {
         upstream('Code-Fetch', 'SUCCESS')
     }
 
-steps {
-shell('''sudo cd /root/task6/
-         sudo cp * -rvf /root/task6/
-      ''')        
+steps {       
 shell('''if ! kubectl get pvc | grep pvc
          then
           kubectl create -f /root/.jenkins/workspace/Code-Fetch/pvc.yml

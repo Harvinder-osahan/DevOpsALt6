@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: php
+spec:
+   replicas: 1
+   selector:
+     matchLabels:
+       app: php
+   template:
+     metadata:
+       name: php-pod
+       labels:
+         app: php
+     spec: 
+       containers:
+       - name: php-container
+         image: harvinderosahan31/web-php
+         volumeMounts:
+         - name: php-volume
+           mountPath: /var/www/html/
+         volumeMounts:
+         - name: php-log
+           mountPath: /var/log/httpd/
+       volumes:
+       - name: php-volume
+         persistentVolumeClaim:
+           claimName: php-pvc
+       - name: php-log
+         persistentVolumeClaim:
+           claimName: php-pvc

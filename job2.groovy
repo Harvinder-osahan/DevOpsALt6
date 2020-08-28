@@ -7,7 +7,7 @@ triggers {
 steps {       
 shell('''if ! kubectl get pvc | grep PVC
          then
-          kubectl create -f /root/.jenkins/workspace/Code-Fetch/PVC.yml
+          kubectl apply -f /root/.jenkins/workspace/Code-Fetch/PVC.yml
          fi
          if ls /root/.jenkins/workspace/Code-Fetch/ | grep .php
          then
